@@ -11,7 +11,7 @@ body{
 
 #calculator{
     background-color: rgb(19, 19, 19);
-    min-height: 400px;
+    min-height: 450px;
     min-width: 300px;
     padding: 5px;
     border: 3px solid rgb(77, 72, 72);
@@ -32,7 +32,7 @@ body{
     grid-row: 1/2;
 }
 
-#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #equals, #decimal, #clear, #add, #subtract, #multiple, #divide{
+#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #equals, #decimal, #clear, #add, #subtract, #multiply, #divide{
     color: white;
     display: flex;
     height: inherit;
@@ -41,6 +41,26 @@ body{
     border: 1px solid black;
     cursor: pointer;
     font-size: x-large;
+}
+
+#zero:active,
+#one:active, 
+#two:active, 
+#three:active, 
+#four:active, 
+#five:active, 
+#six:active, 
+#seven:active, 
+#eight:active, 
+#nine:active, 
+#equals:active, 
+#decimal:active, 
+#clear:active, 
+#add:active, 
+#subtract:active, 
+#multiply:active, 
+#divide:active{
+    transform: scale(0.95);
 }
 
 #seven{

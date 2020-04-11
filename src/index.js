@@ -10,20 +10,40 @@ class Calculator extends React.Component{
         this.state = {
             display: '0'
         }
-        this.displayStuff = this.displayStuff.bind(this);
+    }
+
+    saberi(x,y){
+        return x+y;
+    }
+    oduzmi(x,y){
+        return x-y;
+    }
+    podeli(x,y){
+        return x/y;
+    }
+    pomnozi(x,y){
+        return x*y;
     }
 
     displayStuff(x){
         if(this.state.display !== '0'){
             this.setState({
                 display: this.state.display + x
-            }, console.log(this.state.display));
+            })
         } else {
             this.setState({
                 display: x
-            }, console.log(this.state.display));
+            });
         }
         
+    }
+
+    clear(){
+        this.setState({display: '0'});
+    }
+
+    izracunaj(textOnDisplay){
+        console.log(textOnDisplay)
     }
 
     render(){
@@ -31,22 +51,22 @@ class Calculator extends React.Component{
             <div id="calculator">
                 <div id="display">{this.state.display}</div>
                 <div onClick={() => this.displayStuff('7')} id="seven">7</div>
-                <div id="eight" value="8">8</div>
-                <div id="nine" value="9">9</div>
-                <div id="four" value="4">4</div>
-                <div id="five" value="5">5</div>
-                <div id="six" value="6">6</div>
-                <div id="one" value="1">1</div>
-                <div id="two" value="2">2</div>
-                <div id="three" value="3">3</div>
-                <div id="zero" value="0">0</div>
-                <div id="decimal">.</div>
-                <div id="clear">AC</div>
-                <div id="equals">=</div>
-                <div id="add">+</div>
-                <div id="subtract">-</div>
-                <div id="multiply">*</div>
-                <div id="divide">/</div>
+                <div onClick={() => this.displayStuff('8')} id="eight" value="8">8</div>
+                <div onClick={() => this.displayStuff('9')} id="nine" value="9">9</div>
+                <div onClick={() => this.displayStuff('4')} id="four" value="4">4</div>
+                <div onClick={() => this.displayStuff('5')} id="five" value="5">5</div>
+                <div onClick={() => this.displayStuff('6')} id="six" value="6">6</div>
+                <div onClick={() => this.displayStuff('1')} id="one" value="1">1</div>
+                <div onClick={() => this.displayStuff('2')} id="two" value="2">2</div>
+                <div onClick={() => this.displayStuff('3')} id="three" value="3">3</div>
+                <div onClick={() => this.displayStuff('0')} id="zero" value="0">0</div>
+                <div onClick={() => this.displayStuff('.')} id="decimal">.</div>
+                <div id="clear" onClick={() => this.clear()}>AC</div>
+                <div id="equals" onClick={() => this.izracunaj(this.state.display)}>=</div>
+                <div onClick={() => this.displayStuff('+')} id="add">+</div>
+                <div onClick={() => this.displayStuff('-')} id="subtract">-</div>
+                <div onClick={() => this.displayStuff('*')} id="multiply">*</div>
+                <div onClick={() => this.displayStuff('/')} id="divide">/</div>
             </div>
         );
     }

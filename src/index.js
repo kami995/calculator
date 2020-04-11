@@ -26,7 +26,7 @@ class Calculator extends React.Component{
     }
 
     displayStuff(x){
-        if(this.state.display !== '0'){
+        if(this.state.display !== '0' && this.state.display !== '/' && this.state.display !== '*' && this.state.display !== '+'){
             this.setState({
                 display: this.state.display + x
             })
@@ -43,7 +43,8 @@ class Calculator extends React.Component{
     }
 
     izracunaj(textOnDisplay){
-        console.log(textOnDisplay)
+        let rezultat = 0;
+        console.log(rezultat, textOnDisplay);
     }
 
     render(){
@@ -51,15 +52,15 @@ class Calculator extends React.Component{
             <div id="calculator">
                 <div id="display">{this.state.display}</div>
                 <div onClick={() => this.displayStuff('7')} id="seven">7</div>
-                <div onClick={() => this.displayStuff('8')} id="eight" value="8">8</div>
-                <div onClick={() => this.displayStuff('9')} id="nine" value="9">9</div>
-                <div onClick={() => this.displayStuff('4')} id="four" value="4">4</div>
-                <div onClick={() => this.displayStuff('5')} id="five" value="5">5</div>
-                <div onClick={() => this.displayStuff('6')} id="six" value="6">6</div>
-                <div onClick={() => this.displayStuff('1')} id="one" value="1">1</div>
-                <div onClick={() => this.displayStuff('2')} id="two" value="2">2</div>
-                <div onClick={() => this.displayStuff('3')} id="three" value="3">3</div>
-                <div onClick={() => this.displayStuff('0')} id="zero" value="0">0</div>
+                <div onClick={() => this.displayStuff('8')} id="eight">8</div>
+                <div onClick={() => this.displayStuff('9')} id="nine">9</div>
+                <div onClick={() => this.displayStuff('4')} id="four">4</div>
+                <div onClick={() => this.displayStuff('5')} id="five">5</div>
+                <div onClick={() => this.displayStuff('6')} id="six">6</div>
+                <div onClick={() => this.displayStuff('1')} id="one">1</div>
+                <div onClick={() => this.displayStuff('2')} id="two">2</div>
+                <div onClick={() => this.displayStuff('3')} id="three">3</div>
+                <div onClick={() => this.displayStuff('0')} id="zero">0</div>
                 <div onClick={() => this.displayStuff('.')} id="decimal">.</div>
                 <div id="clear" onClick={() => this.clear()}>AC</div>
                 <div id="equals" onClick={() => this.izracunaj(this.state.display)}>=</div>

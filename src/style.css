@@ -17,7 +17,7 @@ body{
     border: 3px solid rgb(77, 72, 72);
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 16.6%);
 }
 
 #display{
@@ -141,3 +141,4 @@ body{
     border: 1px solid black;
     cursor: pointer;
 }
+

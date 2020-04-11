@@ -1,28 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-import Number from './number';
-import Display from './display'
+// import Number from './number';
+// import Display from './display'
 
 class Calculator extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            display: '0'
+        }
+        this.displayStuff = this.displayStuff.bind(this);
+    }
+
+    displayStuff(x){
+        if(this.state.display !== '0'){
+            this.setState({
+                display: this.state.display + x
+            }, console.log(this.state.display));
+        } else {
+            this.setState({
+                display: x
+            }, console.log(this.state.display));
+        }
+        
     }
 
     render(){
         return(
             <div id="calculator">
-                <Display />
-                <Number id="seven" value="7"></Number>
-                <Number id="eight" value="8"></Number>
-                <Number id="nine" value="9"></Number>
-                <Number id="four" value="4"></Number>
-                <Number id="five" value="5"></Number>
-                <Number id="six" value="6"></Number>
-                <Number id="one" value="1"></Number>
-                <Number id="two" value="2"></Number>
-                <Number id="three" value="3"></Number>
-                <Number id="zero" value="0"></Number>
+                <div id="display">{this.state.display}</div>
+                <div onClick={() => this.displayStuff('7')} id="seven">7</div>
+                <div id="eight" value="8">8</div>
+                <div id="nine" value="9">9</div>
+                <div id="four" value="4">4</div>
+                <div id="five" value="5">5</div>
+                <div id="six" value="6">6</div>
+                <div id="one" value="1">1</div>
+                <div id="two" value="2">2</div>
+                <div id="three" value="3">3</div>
+                <div id="zero" value="0">0</div>
                 <div id="decimal">.</div>
                 <div id="clear">AC</div>
                 <div id="equals">=</div>

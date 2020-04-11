@@ -27,7 +27,7 @@ body{
     justify-content: flex-end;
     color: white;
     text-align: right;
-    font-size: x-large;
+    font-size: xx-large;
     grid-column: 1/5;
     grid-row: 1/2;
 }

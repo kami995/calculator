@@ -15,7 +15,7 @@ class Calculator extends React.Component{
     }
 
     handleDecimal(){
-        if(this.state.isDecimal){
+        if(this.state.isDecimal || this.state.limit){
             console.log("Number is already decimal");
         } else {
             this.setState({
@@ -25,8 +25,8 @@ class Calculator extends React.Component{
         }
     }
 
-    handleOperators(){
-
+    handleOperators(o){
+        
     }
 
     handleNumbers(x){
@@ -81,10 +81,10 @@ class Calculator extends React.Component{
                 <div onClick={() => this.handleDecimal()} id="decimal">.</div>
                 <div id="clear" onClick={() => this.clear()}>AC</div>
                 <div id="equals" onClick={() => this.izracunaj(this.state.display)}>=</div>
-                <div onClick={() => this.handleOperators('+')} id="add">+</div>
-                <div onClick={() => this.handleOperators('-')} id="subtract">-</div>
-                <div onClick={() => this.handleOperators('*')} id="multiply">*</div>
-                <div onClick={() => this.handleOperators('/')} id="divide">/</div>
+                <div onClick={() => this.handleOperators('+')} className="operator" id="add">+</div>
+                <div onClick={() => this.handleOperators('-')} className="operator" id="subtract">-</div>
+                <div onClick={() => this.handleOperators('*')} className="operator" id="multiply">*</div>
+                <div onClick={() => this.handleOperators('/')} className="operator" id="divide">/</div>
             </div>
         );
     }

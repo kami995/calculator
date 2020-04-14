@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-// import Number from './number';
-// import Display from './display'
 
 class Calculator extends React.Component{
     constructor(props){

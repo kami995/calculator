@@ -27,11 +27,63 @@ class Calculator extends React.Component{
     }
 
     handleOperators = (o) => {
-        // switch(o){
-        //     case '+':
-        //     case '/':
-        //     case '*':
-        console.log(o)
+        this.setState({lastPressed: o, isDecimal: false})
+        switch(o){
+            case '+':
+            case '/':
+            case '*':
+                {
+                    if(['0','1','2','3','4','5','6','7','8','9'].includes(this.state.lastPressed)){
+                        this.setState({
+                            formula: this.state.formula + this.state.display,
+                            display: o,
+                        })
+                    } else if(['+','-','*','/'].includes(this.state.lastPressed)){
+                        this.setState({
+                            display: o
+                        })
+                    } else if(this.state.lastPressed === '='){
+                        this.setState({
+                            formula: this.state.display,
+                            display: o
+                        })
+                    } else {
+                        this.setState({
+                            formula: '',
+                            display: o
+                        })
+                    }
+                }
+            break;
+            case '-':
+                {
+                    if(['0','1','2','3','4','5','6','7','8','9'].includes(this.state.lastPressed)){
+                        this.setState({
+                            formula: this.state.formula + this.state.display,
+                            display: o,
+                        })
+                    } else if(['+','*','/'].includes(this.state.lastPressed)){
+                        this.setState({
+                            display: this.state.display + o
+                        })
+                    } else if(this.state.lastPressed === '='){
+                        this.setState({
+                            formula: this.state.display,
+                            display: o
+                        })
+                    } else if(this.state.lastPressed === '-'){
+                        this.setState({
+                            display: o
+                        })
+                    } else {
+                        this.setState({
+                            formula: '',
+                            display: o
+                        })
+                    }             
+                }
+            break;
+        }        
     }
 
     handleNumbers(x){
@@ -89,14 +141,14 @@ class Calculator extends React.Component{
     }
 
     izracunaj(){
-        const f = this.state.formula + this.state.display;
-        const rezultat = 'rez';
+        let izraz = this.state.formula + this.state.display;
+        let rezultat = parseFloat(eval(izraz).toFixed(5));
+
         this.setState({
-            formula: f + '=',
+            formula: izraz + '=',
             display: rezultat,
             lastPressed: '='
         })
-        console.log(f);
     }
 
     render(){
@@ -119,10 +171,10 @@ class Calculator extends React.Component{
                 <div onClick={() => this.handleDecimal()} id="decimal">.</div>
                 <div id="clear" onClick={() => this.clear()}>AC</div>
                 <div id="equals" onClick={() => this.izracunaj()}>=</div>
-                <div onClick={() => this.handleOperators('+')} className="operator" id="add">+</div>
-                <div onClick={() => this.handleOperators('-')} className="operator" id="subtract">-</div>
-                <div onClick={() => this.handleOperators('*')} className="operator" id="multiply">*</div>
-                <div onClick={() => this.handleOperators('/')} className="operator" id="divide">/</div>
+                <div onClick={() => this.handleOperators('+')} id="add">+</div>
+                <div onClick={() => this.handleOperators('-')} id="subtract">-</div>
+                <div onClick={() => this.handleOperators('*')} id="multiply">*</div>
+                <div onClick={() => this.handleOperators('/')} id="divide">/</div>
             </div>
         );
     }

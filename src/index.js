@@ -28,6 +28,7 @@ class Calculator extends React.Component{
 
     handleOperators = (o) => {
         this.setState({lastPressed: o, isDecimal: false})
+        
         switch(o){
             case '+':
             case '/':

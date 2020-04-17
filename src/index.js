@@ -35,30 +35,44 @@ class Calculator extends React.Component{
     }
 
     handleNumbers(x){
-        if(this.state.lastPressed === '='){
+        if(this.state.display.length >= 16 || this.state.formula.length >= 16){
+            alert("Limit reached");
             this.setState({
-                formula: '',
-                display: x,
-                isDecimal: false,
-                limit: false,
+                limit: true
+            })
+        }
+        if(this.state.limit === true){
+            this.setState({
+                display: this.state.display,
+                formula: this.state.formula,
                 lastPressed: x
             });
-        } else if(this.state.lastPressed === undefined){
-            this.setState({
-                display: x,
-                lastPressed: x
-            })
         } else {
-            if(this.state.display === '0'){
+            if(this.state.lastPressed === '='){
+                this.setState({
+                    formula: '',
+                    display: x,
+                    isDecimal: false,
+                    limit: false,
+                    lastPressed: x
+                });
+            } else if(this.state.lastPressed === undefined){
                 this.setState({
                     display: x,
                     lastPressed: x
                 })
             } else {
-                this.setState({
-                    display: this.state.display + x,
-                    lastPressed: x
-                })
+                if(this.state.display === '0'){
+                    this.setState({
+                        display: x,
+                        lastPressed: x
+                    })
+                } else {
+                    this.setState({
+                        display: this.state.display + x,
+                        lastPressed: x
+                    })
+                }
             }
         }
     }
